@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
+// import {
+//   StyleSheet,
+//   View,
+//   TextInput,
+//   Button
+// } from 'react-native';
 import {
-  StyleSheet,
-  View,
-  TextInput,
-  Button
-} from 'react-native';
+  Button,
+  Body,
+  Text,
+  Container,
+  Content,
+  Form,
+  Left,
+  Right,
+  Item,
+  Input
+} from 'native-base';
 import { NavigationActions } from 'react-navigation';
 
 export default class Login extends Component {
@@ -51,39 +63,73 @@ export default class Login extends Component {
   }
 
   render() {
+    /* <View style={{ justifyContent: 'center', flex: 1 }}>
+            <TextInput style={styles.formInput}
+              onChangeText={text => this.setState({
+                username: text
+              })}
+              value={this.state.username}
+              placeholder="username" />
+            <TextInput
+              onChangeText={text => this.setState({
+                password: text
+              })}
+              value={this.state.password}
+              secureTextEntry={true}
+              style={styles.formInput} placeholder="Password" />
+            <Button title="Login" onPress={() => {
+              this.login();
+            }} />
+            <Button title="Register" onPress={() => {
+              this.props.navigation.navigate({ routeName: 'Register' });
+              // this.props.navigation.navigate('Home', { task: '1234' })
+            }} />
+          </View> */
     return (
-      <View style={{ justifyContent: 'center', flex: 1 }}>
-        <TextInput style={styles.formInput}
-          onChangeText={text => this.setState({
-            username: text
-          })}
-          value={this.state.username}
-          placeholder="username" />
-        <TextInput
-          onChangeText={text => this.setState({
-            password: text
-          })}
-          value={this.state.password}
-          secureTextEntry={true}
-          style={styles.formInput} placeholder="Password" />
-        <Button title="Login" onPress={() => {
-          this.login();
-        }} />
-        <Button title="Register" onPress={() => {
-          this.props.navigation.navigate({ routeName: 'Register' });
-          // this.props.navigation.navigate('Home', { task: '1234' })
-        }} />
-      </View>
+      <Container>
+        <Content>
+          <Form>
+            <Item>
+              <Input
+                onChangeText={text => this.setState({
+                  username: text
+                })}
+                value={this.state.username}
+                placeholder="Username" />
+            </Item>
+            <Item>
+              <Input
+                onChangeText={text => this.setState({
+                  password: text
+                })}
+                value={this.state.password}
+                secureTextEntry
+                placeholder="Password" />
+            </Item>
+            <Button block onPress={() => {
+              this.login();
+            }}>
+              <Text>Login</Text>
+            </Button>
+            <Left>
+              <Button transparent>
+                <Text>Register</Text>
+              </Button>
+            </Left>
+          </Form>
+        </Content>
+      </Container>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  formInput: {
-    width: '100%',
-    borderWidth: 1,
-    borderColor: 'blue',
-    padding: 5,
-    marginBottom: 10
-  }
-})
+
+// const styles = StyleSheet.create({
+//   formInput: {
+//     width: '100%',
+//     borderWidth: 1,
+//     borderColor: 'blue',
+//     padding: 5,
+//     marginBottom: 10
+//   }
+// });
