@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AsyncStorage,
   FlatList,
   Image,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class ToDo extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ export default class ToDo extends Component {
     this.saveData(data);
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     try {
       const data = await AsyncStorage.getItem('ToDo');
       if (data !== null) {
@@ -99,7 +99,7 @@ export default class ToDo extends Component {
     //     })
     //   }
     // </ScrollView>
-    
+
     const loginData = this.props.navigation.state.params.data;
     console.log(loginData);
     return (
@@ -122,6 +122,7 @@ export default class ToDo extends Component {
               item={item}
             />}
           extraData={this.state}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     );

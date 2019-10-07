@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import Containers from './containers';
 
-export default StackNavigator({
+const MainNavigator = createStackNavigator({
   Login: {
     screen: Containers.Login,
   },
@@ -13,7 +14,9 @@ export default StackNavigator({
   Register: {
     screen: Containers.Register,
   }
-},
-  {
-    initialRouteName: 'Login',
-  });
+});
+
+const App = createAppContainer(MainNavigator);
+
+export default App;
+
