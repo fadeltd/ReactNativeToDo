@@ -5,7 +5,7 @@ import {
   TextInput,
   Button
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 export default class Login extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class Login extends Component {
       return response.json();
     }).then(data => {
       if (data.success) {
-        const resetAction = NavigationActions.reset({
+        const resetAction = StackActions.reset({
           index: 0,
           actions: [NavigationActions.navigate({ routeName: 'Home', params: { data: data.data } })],
         });
